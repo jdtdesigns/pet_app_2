@@ -40,9 +40,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up GitHub CLI
-      uses: cli/cli-action@v2
-
     - name: Merge pull request
-      run: gh pr merge ${{ github.event.pull_request.number }} --merge
+      uses: actions/github-script@v6
+      with:
+        script: |
+            github.rest.pulls.merge({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.payload.pull_request.number,
+            merge_method: 'merge'
+              })
        
