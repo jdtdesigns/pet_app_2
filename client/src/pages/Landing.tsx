@@ -1,14 +1,16 @@
-import {Row, Col, Container} from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 
 import { GET_ALL_POSTS } from '../graphql/queries';
 import { Post } from '../interfaces';
 
 function Landing() {
-  const {data: postData} = useQuery(GET_ALL_POSTS);
+  const { data: postData } = useQuery(GET_ALL_POSTS);
 
   return (
     <Container fluid={true}>
+      <h1>Works!</h1>
+
       <Row>
         <Col className="landing-hero-image" xs="12" md="6"></Col>
         <Col className="d-flex flex-column justify-content-center hero-text" xs="12" md="6">
